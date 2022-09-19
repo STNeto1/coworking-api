@@ -1,4 +1,4 @@
-module ginn
+module coworking
 
 go 1.19
 

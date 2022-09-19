@@ -6,8 +6,8 @@ import (
 
 	"golang.org/x/crypto/bcrypt"
 
-	"ginn/pkg/common/exceptions"
-	"ginn/pkg/common/models"
+	"coworking/pkg/common/exceptions"
+	"coworking/pkg/common/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"

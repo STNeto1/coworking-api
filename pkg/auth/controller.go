@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 
-	"ginn/pkg/middlewares"
+	"coworking/pkg/middlewares"
 )
 
 type handler struct {

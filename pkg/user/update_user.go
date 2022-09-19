@@ -3,9 +3,9 @@ package user
 import (
 	"net/http"
 
-	"ginn/pkg/common/authorization"
-	"ginn/pkg/common/exceptions"
-	"ginn/pkg/common/models"
+	"coworking/pkg/common/authorization"
+	"coworking/pkg/common/exceptions"
+	"coworking/pkg/common/models"
 
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"

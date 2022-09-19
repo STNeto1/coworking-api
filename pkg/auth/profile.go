@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"ginn/pkg/common/authorization"
+	"coworking/pkg/common/authorization"
 
 	"github.com/gin-gonic/gin"
 )

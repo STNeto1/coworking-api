@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"ginn/pkg/common/db"
-	"ginn/pkg/common/models"
+	"coworking/pkg/common/db"
+	"coworking/pkg/common/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"

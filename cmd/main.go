@@ -1,11 +1,11 @@
 package main
 
 import (
+	"coworking/pkg/auth"
+	"coworking/pkg/common/config"
+	"coworking/pkg/common/db"
+	"coworking/pkg/user"
 	"fmt"
-	"ginn/pkg/auth"
-	"ginn/pkg/common/config"
-	"ginn/pkg/common/db"
-	"ginn/pkg/user"
 	"os"
 
 	"github.com/gin-gonic/gin"

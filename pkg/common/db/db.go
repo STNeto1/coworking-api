@@ -3,7 +3,7 @@ package db
 import (
 	"log"
 
-	"ginn/pkg/common/models"
+	"coworking/pkg/common/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

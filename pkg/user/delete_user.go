@@ -3,7 +3,7 @@ package user
 import (
 	"net/http"
 
-	"ginn/pkg/common/authorization"
+	"coworking/pkg/common/authorization"
 
 	"github.com/gin-gonic/gin"
 )
