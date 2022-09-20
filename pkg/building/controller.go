@@ -25,4 +25,6 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB) {
 	authRoutes.GET("/user", h.GetUserBuildings)
 	authRoutes.PUT("/:id", h.UpdateBuilding)
 	authRoutes.DELETE("/:id", h.DeleteBuilding)
+
+	authRoutes.POST("/room", h.CreateRoom)
 }

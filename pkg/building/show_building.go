@@ -13,7 +13,7 @@ func (h handler) ShowBuilding(c *gin.Context) {
 
 	var building models.Building
 
-	if err := h.DB.Preload("Address").First(&building, "id = ?", id).Error; err != nil {
+	if err := h.DB.Preload("Address").Preload("Rooms").First(&building, "id = ?", id).Error; err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.NotFound("Building not found"))
 		return
 	}
