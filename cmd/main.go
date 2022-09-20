@@ -2,6 +2,7 @@ package main
 
 import (
 	"coworking/pkg/auth"
+	"coworking/pkg/building"
 	"coworking/pkg/common/config"
 	"coworking/pkg/common/db"
 	"coworking/pkg/user"
@@ -33,6 +34,7 @@ func main() {
 
 	auth.RegisterRoutes(r, h)
 	user.RegisterRoutes(r, h)
+	building.RegisterRoutes(r, h)
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
