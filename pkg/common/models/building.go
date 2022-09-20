@@ -14,7 +14,7 @@ type Building struct {
 	UserID      string         `json:"-"`
 	User        User           `json:"-"`
 	AddressID   string         `json:"-"`
-	Address     Address        `json:"address"`
+	Address     *Address       `json:"address,omitempty"`
 	CreatedAt   time.Time      `json:"created_at"`
 	UpdatedAt   time.Time      `json:"updated_at"`
 	DeletedAt   gorm.DeletedAt `gorm:"index" json:"-"`
