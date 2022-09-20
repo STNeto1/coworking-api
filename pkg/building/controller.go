@@ -18,6 +18,7 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB) {
 
 	routes := r.Group("/buildings")
 	routes.GET("/", h.GetAllBuildings)
+	routes.GET("/:id", h.ShowBuilding)
 
 	authRoutes := routes.Use(middlewares.AuthorizeJWT())
 	authRoutes.POST("/", h.CreateBuilding)
