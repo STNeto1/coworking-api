@@ -14,7 +14,7 @@ import (
 type CreateRoomRequestBody struct {
 	Name        string `json:"name" binding:"required"`
 	Description string `json:"description" binding:"required"`
-	Building    string `json:"building" binding:"required"`
+	Building    string `json:"building" binding:"required,uuid"`
 }
 
 func (h handler) CreateRoom(c *gin.Context) {
