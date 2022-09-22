@@ -36,7 +36,7 @@ func (h handler) CreateRoom(c *gin.Context) {
 	}
 
 	var building models.Building
-	if err := h.DB.Where("id = ? AND user_id = ?", body.Building, user.ID).Preload("Address").First(&building).Error; err != nil {
+	if err := h.DB.Where("id = ? AND user_id = ?", body.Building, user.ID).First(&building).Error; err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.NotFound("Building not found"))
 		return
 	}
