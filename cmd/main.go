@@ -5,6 +5,7 @@ import (
 	"coworking/pkg/building"
 	"coworking/pkg/common/config"
 	"coworking/pkg/common/db"
+	"coworking/pkg/room"
 	"coworking/pkg/user"
 	"fmt"
 	"os"
@@ -24,17 +25,18 @@ func main() {
 		}
 	}
 
-	config, err := config.LoadConfig()
+	conf, err := config.LoadConfig()
 	if err != nil { // Handle errors reading the config file
 		panic(fmt.Errorf("fatal error loading config: %w", err))
 	}
 
 	r := gin.Default()
-	h := db.Init(config.DBUrl)
+	h := db.Init(conf.DBUrl)
 
 	auth.RegisterRoutes(r, h)
 	user.RegisterRoutes(r, h)
 	building.RegisterRoutes(r, h)
+	room.RegisterRoutes(r, h)
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
