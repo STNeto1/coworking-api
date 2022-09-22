@@ -1,4 +1,4 @@
-package building
+package room
 
 import (
 	"coworking/pkg/common/authorization"
