@@ -13,7 +13,7 @@ func (h handler) ShowRoom(c *gin.Context) {
 
 	var room models.Room
 
-	if err := h.DB.Preload("Building").Preload("Building.Address").Preload("Prices").First(&room, "id = ?", id).Error; err != nil {
+	if err := h.DB.Preload("Building.Address").Preload("Prices").First(&room, "id = ?", id).Error; err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.NotFound("Room not found"))
 		return
 	}

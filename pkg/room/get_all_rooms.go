@@ -25,7 +25,7 @@ func (h handler) GetAllRooms(c *gin.Context) {
 
 	var rooms []models.Room
 
-	if err := query.Find(&rooms).Error; err != nil {
+	if err := query.Preload("Building").Find(&rooms).Error; err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.InternalServerError("Error while getting rooms"))
 		return
 	}
