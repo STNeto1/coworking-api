@@ -7,6 +7,7 @@ import (
 	"coworking/pkg/common/db"
 	"coworking/pkg/common/validators"
 	"coworking/pkg/room"
+	"coworking/pkg/schedule"
 	"coworking/pkg/user"
 	"fmt"
 	"os"
@@ -44,6 +45,7 @@ func main() {
 	user.RegisterRoutes(r, h)
 	building.RegisterRoutes(r, h)
 	room.RegisterRoutes(r, h)
+	schedule.RegisterRoutes(r, h)
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{

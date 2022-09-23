@@ -17,7 +17,7 @@ const (
 
 type Schedule struct {
 	ID        string         `sql:"type:uuid;primary_key" json:"id"`
-	Price     float32        `json:"Price"`
+	Price     float32        `sql:"type:decimal(10,2);" json:"price"`
 	From      time.Time      `json:"from"`
 	To        time.Time      `json:"to"`
 	Status    string         `json:"status"`
