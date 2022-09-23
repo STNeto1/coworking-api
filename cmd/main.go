@@ -5,12 +5,15 @@ import (
 	"coworking/pkg/building"
 	"coworking/pkg/common/config"
 	"coworking/pkg/common/db"
+	"coworking/pkg/common/validators"
 	"coworking/pkg/room"
 	"coworking/pkg/user"
 	"fmt"
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/go-playground/validator/v10"
 	"github.com/spf13/viper"
 )
 
@@ -32,6 +35,10 @@ func main() {
 
 	r := gin.Default()
 	h := db.Init(conf.DBUrl)
+
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
+		_ = v.RegisterValidation("Enum", validators.Enum)
+	}
 
 	auth.RegisterRoutes(r, h)
 	user.RegisterRoutes(r, h)

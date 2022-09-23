@@ -21,6 +21,7 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB) {
 	routes.GET("/:id", h.ShowRoom)
 
 	authRoutes := routes.Use(middlewares.AuthorizeJWT())
+	authRoutes.POST("/pricing", h.CreateRoomPricing)
 	authRoutes.POST("/", h.CreateRoom)
 	authRoutes.PUT("/:id", h.UpdateRoom)
 	authRoutes.DELETE("/:id", h.DeleteRoom)
