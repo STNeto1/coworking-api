@@ -12,7 +12,7 @@ type Room struct {
 	Name        string         `json:"name"`
 	Description string         `json:"description"`
 	BuildingID  string         `json:"-"`
-	Building    Building       `json:"-"`
+	Building    *Building      `json:"building,omitempty"`
 	CreatedAt   time.Time      `json:"created_at"`
 	UpdatedAt   time.Time      `json:"updated_at"`
 	DeletedAt   gorm.DeletedAt `gorm:"index" json:"-"`

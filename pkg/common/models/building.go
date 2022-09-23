@@ -15,7 +15,7 @@ type Building struct {
 	User        User           `json:"-"`
 	AddressID   string         `json:"-"`
 	Address     *Address       `json:"address,omitempty"`
-	Rooms       []Room         `json:"rooms"`
+	Rooms       []Room         `json:"rooms,omitempty"`
 	CreatedAt   time.Time      `json:"created_at"`
 	UpdatedAt   time.Time      `json:"updated_at"`
 	DeletedAt   gorm.DeletedAt `gorm:"index" json:"-"`
