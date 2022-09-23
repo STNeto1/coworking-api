@@ -42,7 +42,7 @@ func (h handler) CreateRoomPricing(c *gin.Context) {
 	}
 
 	if user.ID != room.Building.UserID {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.Unauthorized("Unauthorized 222"))
+		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.Unauthorized("Unauthorized"))
 		return
 	}
 

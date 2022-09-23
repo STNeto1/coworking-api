@@ -11,16 +11,16 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
-type UpdateRoomRequestBody struct {
-	Name        string `json:"name" binding:"required"`
-	Description string `json:"description" binding:"required"`
+type UpdateRoomPricing struct {
+	Price float32 `json:"price" binding:"required,min=1"`
+	Type  string  `json:"type" binding:"required,Enum=shift_daily_weekly"`
 }
 
-func (h handler) UpdateRoom(c *gin.Context) {
+func (h handler) UpdateRoomPricing(c *gin.Context) {
 	id := c.Param("id")
 	user := authorization.ExtractUser(c)
 
-	body := UpdateRoomRequestBody{}
+	body := UpdateRoomPricing{}
 
 	if err := c.ShouldBindJSON(&body); err != nil {
 		var ve validator.ValidationErrors
@@ -35,24 +35,24 @@ func (h handler) UpdateRoom(c *gin.Context) {
 		}
 	}
 
-	var room models.Room
-	if err := h.DB.Where("id = ?", id).Preload("Building").First(&room).Error; err != nil {
+	var pricing models.RoomPricing
+	if err := h.DB.Where("id = ?", id).Preload("Room.Building").First(&pricing).Error; err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.NotFound("Room not found"))
 		return
 	}
 
-	if user.ID != room.Building.UserID {
+	if user.ID != pricing.Room.Building.UserID {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.Unauthorized("Unauthorized"))
 		return
 	}
 
-	room.Name = body.Name
-	room.Description = body.Description
+	pricing.Price = body.Price
+	pricing.Type = body.Type
 
-	if result := h.DB.Save(&room); result.Error != nil {
+	if result := h.DB.Save(&pricing); result.Error != nil {
 		c.JSON(http.StatusInternalServerError, exceptions.InternalServerError("Internal error"))
 		return
 	}
 
-	c.JSON(http.StatusOK, room)
+	c.JSON(http.StatusOK, pricing)
 }
