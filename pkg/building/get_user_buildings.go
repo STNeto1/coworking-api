@@ -13,7 +13,7 @@ func (h handler) GetUserBuildings(c *gin.Context) {
 	user := authorization.ExtractUser(c)
 
 	var buildings []models.Building
-	if err := h.DB.Where("user_id = ?", user.ID).Preload("Address").Find(&buildings).Error; err != nil {
+	if err := h.DB.Where("user_id = ?", user.ID).Preload("Address").Preload("Rooms.Schedules").Find(&buildings).Error; err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, exceptions.InternalServerError("Error while getting buildings"))
 		return
 	}

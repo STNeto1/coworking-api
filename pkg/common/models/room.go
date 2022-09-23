@@ -11,6 +11,7 @@ type Room struct {
 	ID          string         `sql:"type:uuid;primary_key" json:"id"`
 	Name        string         `json:"name"`
 	Description string         `json:"description"`
+	Schedules   []Schedule     `json:"schedules,omitempty"`
 	BuildingID  string         `json:"-"`
 	Building    *Building      `json:"building,omitempty"`
 	CreatedAt   time.Time      `json:"created_at"`
