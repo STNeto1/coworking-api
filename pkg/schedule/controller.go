@@ -19,6 +19,7 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB) {
 	routes := r.Group("/schedules")
 
 	authRoutes := routes.Use(middlewares.AuthorizeJWT())
+	authRoutes.POST("/book", h.BookSchedule)
 	authRoutes.POST("/", h.CreateSchedule)
 	authRoutes.PUT("/:id", h.UpdateSchedule)
 }
