@@ -9,7 +9,5 @@ import (
 func (h handler) Profile(c *gin.Context) {
 	user := authorization.ExtractUser(c)
 
-	c.JSON(200, gin.H{
-		"user": user,
-	})
+	c.JSON(200, user)
 }
