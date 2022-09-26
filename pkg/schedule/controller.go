@@ -22,4 +22,5 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB) {
 	authRoutes.POST("/book", h.BookSchedule)
 	authRoutes.POST("/", h.CreateSchedule)
 	authRoutes.PUT("/:id", h.UpdateSchedule)
+	authRoutes.GET("/", h.GetUserScheduledRooms)
 }
