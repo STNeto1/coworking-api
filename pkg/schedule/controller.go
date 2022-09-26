@@ -20,5 +20,5 @@ func RegisterRoutes(r *gin.Engine, db *gorm.DB) {
 
 	authRoutes := routes.Use(middlewares.AuthorizeJWT())
 	authRoutes.POST("/", h.CreateSchedule)
-
+	authRoutes.PUT("/:id", h.UpdateSchedule)
 }

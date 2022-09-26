@@ -5,7 +5,6 @@ import (
 	"coworking/pkg/common/exceptions"
 	"coworking/pkg/common/models"
 	"errors"
-	"fmt"
 	"net/http"
 	"time"
 
@@ -36,8 +35,6 @@ func (h handler) CreateSchedule(c *gin.Context) {
 			return
 		}
 	}
-
-	fmt.Println(body)
 
 	var room models.Room
 	if err := h.DB.Where("id = ?", body.Room).Preload("Building").First(&room).Error; err != nil {
